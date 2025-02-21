@@ -10,8 +10,12 @@ export class ProdutoRepository {
   }
 
   salva(dadosProduto: ProdutoEntity) {
-    this.produtos.push(dadosProduto);
-    return dadosProduto;
+    try {
+      this.produtos.push(dadosProduto);
+      return dadosProduto;     
+    } catch (error) {
+      throw new Error('Erro ai inserir produto');
+    }
   }
 
   private buscaPorId(id: string) {
